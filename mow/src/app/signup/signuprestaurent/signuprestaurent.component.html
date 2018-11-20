@@ -1,0 +1,40 @@
+<div class="container pt-5">
+  <div  class="row justify-content-center">
+    <div class="col-md-4">
+      <form #restaurentsignupForm="ngForm" (ngSubmit)="signup(restaurentsignupForm.value)">
+        <div class="form-group">
+          <input type="text" name="districtname" placeholder="DistrictName" #name1="ngModel" ngModel class="form-control" required>
+          <div *ngIf="name1.errors">
+            <div class="alert alert-danger" *ngIf="name1.errors.required && name1.touched">Name is required</div>
+          </div>
+
+          </div>
+      
+
+       
+        <div class="form-group">
+          <input type="email" placeholder="Enter email address" name="email" #email="ngModel" ngModel class="form-control" required>
+          <div *ngIf="email.invalid && email.touched">
+            <div class="alert alert-danger">
+              Email is invalid
+            </div>
+          </div>
+        </div>
+        
+       
+       
+        <div class="form-group">
+          <input type="text" placeholder="Enter phone number" #phone="ngModel" ngModel name="phone" class="form-control" required minlength="10" maxlength="10">
+        </div>
+         {{phone.errors | json}}
+        <div class="form-group">
+          <input type="password" placeholder="Enter password" #password="ngModel" ngModel name="password" class="form-control" required>
+        </div>
+     
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-success" [disabled]="restaurentsignupForm.invalid">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
